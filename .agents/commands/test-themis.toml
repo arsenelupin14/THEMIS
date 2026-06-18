@@ -1,0 +1,25 @@
+description = "Run Themis tests and deterministic simulation checks."
+
+prompt = """
+Run Themis validation in /home/ikbarfaiz/Projects/THEMIS.
+
+Use:
+- @themis-test-engineer
+- @themis-simulation-engineer
+- @themis-qa-auditor
+
+Commands:
+pytest
+python skills/themis/scripts/validate_themis_skill.py
+
+Fix all failures.
+
+Pass criteria:
+- required files exist
+- SKILL.md frontmatter valid
+- examples include dynamic roles
+- examples include challenge/conflict
+- examples include THEMIS_STATE_V1
+- no empty agreement
+- validation script passes
+"""

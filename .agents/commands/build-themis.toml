@@ -1,0 +1,41 @@
+description = "Build Themis as a GitHub-installable AI agent skill using Antigravity subagents."
+
+prompt = """
+Build Themis in /home/ikbarfaiz/Projects/THEMIS.
+
+Important:
+Themis is NOT a standalone CLI.
+Themis is NOT a web app.
+Themis is NOT a multi-agent runtime framework.
+Themis is a GitHub-installable AI agent skill.
+
+Use Antigravity subagents to parallelize:
+- @themis-architect for architecture and product boundary
+- @themis-skill-author for SKILL.md, references, and templates
+- @themis-installer-engineer for install scripts and README install docs
+- @themis-test-engineer for deterministic scripts and tests
+- @themis-simulation-engineer for examples and simulation cases
+- @themis-qa-auditor for final audit
+
+Product file:
+skills/themis/SKILL.md
+
+Required behavior:
+- dynamic role generation
+- structured disagreement
+- no empty agreement
+- shared compact memory
+- conflict cards
+- supervisor final report
+- simulation examples
+
+MiroFish is only conceptual inspiration.
+Do not copy any MiroFish code, prompts, assets, or implementation details.
+
+After implementation:
+1. run pytest
+2. run python skills/themis/scripts/validate_themis_skill.py
+3. fix failures
+4. run final QA audit
+5. produce final implementation report
+"""

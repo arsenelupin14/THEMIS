@@ -1,0 +1,8 @@
+CONFLICT_ID:
+BETWEEN:
+CLAIM_A:
+CLAIM_B:
+IMPACT:
+EVIDENCE:
+RESOLUTION:
+STATUS: open / resolved / escalated

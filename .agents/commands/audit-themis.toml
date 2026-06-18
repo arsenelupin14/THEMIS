@@ -1,0 +1,22 @@
+description = "Audit Themis for scope drift, safety, installation claims, and behavior quality."
+
+prompt = """
+Audit Themis in /home/ikbarfaiz/Projects/THEMIS.
+
+Use @themis-qa-auditor.
+
+Check:
+- Themis is a skill, not standalone CLI
+- no web app drift
+- no MiroFish copying
+- no prediction claims
+- no private chain-of-thought claims
+- dynamic role generation exists
+- structured disagreement exists
+- no empty agreement
+- compressed memory exists
+- install docs are accurate and cautious
+- tests pass
+
+Return PASS only if there are no blocking issues.
+"""

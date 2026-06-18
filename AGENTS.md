@@ -19,6 +19,16 @@ skills/themis/scripts/
 
 The `.agents/` directory is development-only and exists to help maintainers build Themis in parallel.
 
+## Product boundary clarification
+
+The `.agents/` directory is development-only.
+
+Do not treat `.agents/agents` or `.agents/commands` as part of the installable Themis skill.
+
+The only installable skill package is:
+
+skills/themis/
+
 ## Rules
 
 - Do not copy code, prompts, or assets from MiroFish.

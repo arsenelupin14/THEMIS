@@ -24,6 +24,16 @@ It dynamically generates task-specific roles, forces useful disagreement, mainta
 - Not a prediction engine
 - Not a database or RAG system
 
+## Repository layout
+
+The installable Themis skill lives in:
+
+```text
+skills/themis/
+```
+
+The `.agents/` directory is maintainer-only Antigravity build automation. It is not required by end users and is not part of the Themis skill package.
+
 ## Install
 
 ### GitHub CLI

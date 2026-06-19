@@ -1,0 +1,7 @@
+THEMIS_ORCHESTRATION_V1:
+  current_stage: intake
+  stages:
+    - intake
+    - workroom_init
+  gates:
+    - retrieval_gate

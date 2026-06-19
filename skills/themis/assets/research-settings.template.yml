@@ -1,0 +1,44 @@
+THEMIS_RESEARCH_SETTINGS_V1:
+  mode: research
+  citation_gate: strict
+  peer_review_gate: strict
+  allow_unverified_in_final: false
+  allow_internal_tags_in_final: false
+  allow_internal_tags_in_drafts: false
+
+  required_agents:
+    - master_research
+    - evidence_retrieval_agent
+    - citation_auditor
+    - peer_reviewer
+
+  dynamic_spawning:
+    enabled: true
+    max_initial_domain_agents: 5
+    max_total_agents: 10
+    require_master_approval: true
+
+  citation_statuses:
+    - VERIFIED
+    - UNVERIFIED
+    - NEEDS_CITATION
+    - CITATION_FAILED
+    - DISPUTED
+    - QUARANTINED
+    - RETRACTED
+
+  public_output_forbidden_patterns:
+    - "FACT-"
+    - "CONFLICT-"
+    - "CONTRACT-"
+    - "DECISION-"
+    - "THEMIS_STATE_V1"
+    - "ROLE:"
+    - "POSITION:"
+    - "HANDOFF:"
+    - "CLAIM_ID"
+    - "SOURCE_STATUS"
+    - "[EVIDENCE]"
+    - "[ASSUMPTION]"
+    - "[UNKNOWN]"
+    - "[NEEDS-CITATION]"

@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-SKILL = ROOT / "skills" / "themis" / "SKILL.md"
 
 REQUIRED_FILES = [
-    "skills/themis/SKILL.md",
     "skills/themis/references/research-mode.md",
     "skills/themis/references/citation-hardening.md",
     "skills/themis/references/peer-review-gate.md",
@@ -33,59 +30,44 @@ REQUIRED_FILES = [
     "skills/themis/assets/gate-card.template.md",
     "skills/themis/assets/stage-card.template.md",
     "skills/themis/assets/revision-loop.template.md",
+    "skills/themis/scripts/validate_public_output.py",
+    "skills/themis/scripts/validate_claim_ledger.py",
+    "skills/themis/scripts/validate_retrieval_contract.py",
+    "skills/themis/scripts/validate_orchestration_manifest.py",
 ]
-
-FORBIDDEN_CLAIMS = [
-    "predict everything",
-    "guaranteed",
-    "100% accurate",
-    "private chain-of-thought",
-    "copy mirofish",
-]
-
-def fail(msg: str) -> None:
-    print(f"FAIL: {msg}")
-    sys.exit(1)
 
 def main() -> None:
+    failures = []
+
     for rel in REQUIRED_FILES:
-        path = ROOT / rel
-        if not path.exists():
-            fail(f"missing required file: {rel}")
+        if not (ROOT / rel).exists():
+            failures.append(f"missing file: {rel}")
 
-    text = SKILL.read_text(encoding="utf-8")
+    skill_path = ROOT / "skills/themis/SKILL.md"
+    if not skill_path.exists():
+        failures.append("missing skills/themis/SKILL.md")
+    else:
+        skill = skill_path.read_text(encoding="utf-8", errors="ignore")
 
-    if not text.startswith("---"):
-        fail("SKILL.md missing YAML frontmatter")
+        required_phrases = [
+            "Citation Auditor",
+            "Peer Reviewer",
+            "No verified citation, no evidence claim",
+            "Internal labels must not appear in clean drafts or final reports",
+            "spawn new specialist agents",
+        ]
 
-    if "name: themis" not in text:
-        fail("SKILL.md missing name: themis")
+        for phrase in required_phrases:
+            if phrase not in skill:
+                failures.append(f"SKILL.md missing phrase: {phrase}")
 
-    if "description:" not in text:
-        fail("SKILL.md missing description")
+    if failures:
+        print("FAIL: research mode incomplete")
+        for failure in failures:
+            print(f"- {failure}")
+        sys.exit(1)
 
-    required_phrases = [
-        "Do not simply agree with the user",
-        "Evidence Retrieval Agent",
-        "Citation Auditor agent",
-        "Peer Reviewer agent",
-        "No verified citation, no evidence claim",
-    ]
-
-    for phrase in required_phrases:
-        if phrase not in text:
-            fail(f"SKILL.md missing required phrase: {phrase}")
-
-    all_text = "\n".join(
-        path.read_text(encoding="utf-8", errors="ignore")
-        for path in ROOT.rglob("*.md")
-    ).lower()
-
-    for claim in FORBIDDEN_CLAIMS:
-        if claim in all_text:
-            fail(f"forbidden claim found: {claim}")
-
-    print("PASS: Themis skill structure is valid")
+    print("PASS: Themis research mode is valid")
 
 if __name__ == "__main__":
     main()

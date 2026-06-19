@@ -1,0 +1,23 @@
+THEMIS_ORCHESTRATION_V1:
+  current_stage: intake
+  stages:
+    - intake
+    - workroom_init
+    - core_agent_spawn
+    - domain_agent_spawn
+    - independent_research
+    - claim_ledger_build
+    - evidence_retrieval
+    - retrieval_gate
+    - citation_audit_gate
+    - dynamic_spawn_check
+    - revision_loop
+    - peer_review_gate
+    - public_output_gate
+    - final_report
+  gates:
+    - retrieval_gate
+    - citation_gate
+    - peer_review_gate
+    - public_output_gate
+    - spawn_gate

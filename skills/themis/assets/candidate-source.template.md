@@ -1,0 +1,12 @@
+CANDIDATE_SOURCE_ID:
+CLAIM_ID:
+QUERY_ID:
+TITLE:
+AUTHORS:
+YEAR:
+VENUE:
+DOI_URL:
+TIER: 1 / 2 / 3 / 4
+EXTRACTED_QUOTES_OR_DATA:
+RELEVANCE_SUMMARY:
+SUPPORT_VERDICT: fully_supports / partially_supports / does_not_support / contradicts

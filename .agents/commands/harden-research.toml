@@ -1,0 +1,10 @@
+description = "Harden Themis research mode and citation workflows."
+
+prompt = """
+Upgrade Themis into a research-specialist agent skill.
+Review the validators, reference files, assets, examples, and test suite.
+Verify that:
+- Evidence Retrieval Agent is integrated.
+- Citation Auditor is restricted correctly.
+- Clean public output boundaries are enforced.
+"""

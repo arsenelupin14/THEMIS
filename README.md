@@ -1,6 +1,8 @@
 # Themis
 
-![Themis Logo](assets/themis-logo.png)
+<p align="center">
+  <img src="assets/THEMIS.png" alt="Themis Logo" width="600">
+</p>
 
 ![GitHub stars](https://img.shields.io/github/stars/arsenelupin14/THEMIS?style=flat-square)
 ![GitHub forks](https://img.shields.io/github/forks/arsenelupin14/THEMIS?style=flat-square)

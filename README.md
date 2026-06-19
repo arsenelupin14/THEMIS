@@ -9,17 +9,19 @@
 
 Research workrooms for AI agents.
 
-Themis is a GitHub-installable agent skill for evidence-aware research synthesis, citation auditing, adversarial review, and clean final reports. 
+A GitHub-installable agent skill for evidence-aware research synthesis, citation auditing, adversarial review, and clean final reports.
 
-Themis turns a single general-purpose AI agent into a structured research workroom. It creates task-specific specialist roles, separates evidence retrieval from citation verification, records claims and sources, forces useful disagreement, reviews overclaiming, maintains compact workroom memory, and produces a clean supervisor-grade final report.
+Themis is an AI agent skill that converts a single general-purpose assistant into a structured, multi-agent research workflow. By establishing clear boundaries, it turns messy reasoning into an auditable process covering evidence retrieval, citation verification, adversarial review, and clean final reports.
 
 ## Why Themis
 
-While general-purpose AI agents can produce research-style outputs quickly, their internal reasoning and source dependencies are often difficult to review. Themis introduces a structured research workflow that separates retrieval from verification, monitors claims and citations, and enforces an explicit review process before generating final reports.
+While a standard LLM agent workflow can produce research-style outputs quickly, the underlying reasoning is often difficult to audit. Claims may lack backing, citation verification can be weak, and agents might agreeic-ally collapse too early.
+
+Themis implements an agentic research workflow that makes structured research synthesis explicit. It forces the system to separate evidence retrieval from citation verification, maintain a claim ledger and a source register, and run peer review gates before compiling a clean final report.
 
 ## How it works
 
-Themis runs the research workroom through a sequential multi-stage pipeline:
+Themis coordinates the research workroom using a structured orchestration manifest that drives the following stages:
 
 ```text
 Intake
@@ -49,55 +51,35 @@ Clean final report
 
 ## Research roles
 
-Every research workroom requires four core management roles alongside 2–5 task-specific domain agents:
+To manage this multi-agent research workflow, Themis defines four core management roles alongside 2–5 task-specific domain agents:
 
-* **Master Research**: Coordinates the workroom, manages the revision loop, approves dynamic spawning, and synthesizes the final report.
-* **Evidence Retrieval Agent**: Formulates queries and gathers candidate sources for claims requiring external evidence.
-* **Citation Auditor**: Performs metadata checks on candidate sources and audits whether they support the associated claims.
-* **Peer Reviewer**: Audits methodology, checks for overclaiming, and verifies final-report readiness.
+* **Master Research**: Oversees the workspace, manages the revision loop, approves dynamic specialist spawning, and compiles the final supervisor-grade final report.
+* **Evidence Retrieval Agent**: Responsible for formulating search queries and gathering candidate sources for claims that require citations.
+* **Citation Auditor**: Conducts metadata checks and citation audits to ensure the source supports the claims.
+* **Peer Reviewer**: Audits methodology, conducts overclaiming reviews, and checks readiness for the public output gate.
 
 ## Evidence and citation flow
 
-To ensure auditability, Themis decouples search from validation:
+Themis establishes a strict division between information gathering and validation:
 
-1. **Retrieval**: The Evidence Retrieval Agent finds candidate space or literature sources when tools are available.
-2. **Auditing**: The Citation Auditor verifies source metadata and audits whether the claims match the source.
-3. **Review**: The Peer Reviewer checks the methodology, formatting, and potential overclaiming.
-4. **Approval**: The Master Research agent compiles the verified findings into the clean draft.
+1. **Retrieval**: The Evidence Retrieval Agent queries host-provided search or database tools to compile candidates.
+2. **Citation Verification**: The Citation Auditor verifies candidate metadata and updates the claim ledger with verified or quarantined statuses.
+3. **Peer Review**: The Peer Reviewer conducts a source-grounded review to verify formatting, citation alignment, and check for overclaiming.
+4. **Final Compilation**: Once all gates pass, the Master Research agent writes the clean final report.
 
 ## Repository layout
 
-The installable Themis skill lives in:
+The installable skill package lives in:
 
 ```text
 skills/themis/
 ```
 
-The `.agents/` directory contains maintainer-only Antigravity build automation and is not part of the end-user skill package.
-
-```text
-THEMIS/
-  skills/
-    themis/
-      SKILL.md
-      references/
-      assets/
-      scripts/
-
-  examples/
-    research-solar-physics-v02/
-
-  tests/
-    fixtures/
-
-  install/
-
-  .agents/
-    agents/
-    commands/
-```
+The `.agents/` directory is maintainer-only automation and is not required by end users.
 
 ## Install
+
+Themis can be installed as a Codex skill, Claude Code skill, Gemini CLI skill, or Antigravity skill.
 
 Using GitHub skill install:
 
@@ -154,8 +136,8 @@ pytest
 python skills/themis/scripts/validate_themis_skill.py
 python skills/themis/scripts/validate_research_mode.py
 python skills/themis/scripts/validate_retrieval_contract.py
-python skills/themis/scripts/validate_public_output.py examples/research-solar-physics-v02/clean-final-sample.md
-python skills/themis/scripts/validate_claim_ledger.py examples/research-solar-physics-v02/claim-ledger-sample.md
+python skills/themis/scripts/validate_public_output.py tests/fixtures/valid-clean-final.md
+python skills/themis/scripts/validate_claim_ledger.py tests/fixtures/valid-claim-ledger.md
 python skills/themis/scripts/validate_orchestration_manifest.py tests/fixtures/valid-orchestration-manifest.yml
 ```
 
@@ -163,7 +145,7 @@ python skills/themis/scripts/validate_orchestration_manifest.py tests/fixtures/v
 
 Inspect skills before installing.
 
-Themis validation scripts are local, deterministic helpers. They do not require network access. Retrieval tasks are performed by the host agent when search or database tools are provided.
+Themis validation scripts are local, deterministic helpers that do not require network access. Retrieval tasks are performed by the host agent when search or database tools are provided.
 
 ## License
 

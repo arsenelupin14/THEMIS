@@ -30,10 +30,10 @@ jobs:
         run: python skills/themis/scripts/validate_research_mode.py
 
       - name: Validate public sample output
-        run: python skills/themis/scripts/validate_public_output.py examples/research-solar-physics-v02/clean-final-sample.md
+        run: python skills/themis/scripts/validate_public_output.py tests/fixtures/valid-clean-final.md
 
       - name: Validate claim ledger
-        run: python skills/themis/scripts/validate_claim_ledger.py examples/research-solar-physics-v02/claim-ledger-sample.md
+        run: python skills/themis/scripts/validate_claim_ledger.py tests/fixtures/valid-claim-ledger.md
 
       - name: Validate retrieval contract
         run: python skills/themis/scripts/validate_retrieval_contract.py

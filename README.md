@@ -1,19 +1,25 @@
-# Themis
-
 <p align="center">
   <img src="assets/THEMIS.png" alt="Themis Logo" width="600">
 </p>
 
-![GitHub stars](https://img.shields.io/github/stars/arsenelupin14/THEMIS?style=flat-square)
-![GitHub forks](https://img.shields.io/github/forks/arsenelupin14/THEMIS?style=flat-square)
-![GitHub watchers](https://img.shields.io/github/watchers/arsenelupin14/THEMIS?style=flat-square)
-![GitHub release](https://img.shields.io/github/v/release/arsenelupin14/THEMIS?style=flat-square)
-![License](https://img.shields.io/github/license/arsenelupin14/THEMIS?style=flat-square)
-![CI](https://img.shields.io/github/actions/workflow/status/arsenelupin14/THEMIS/validate.yml?branch=main&style=flat-square)
+<h1 align="center">Themis</h1>
 
-Research workrooms for AI agents.
+<p align="center">
+  <img src="https://img.shields.io/github/stars/arsenelupin14/THEMIS?style=flat-square" alt="GitHub stars">
+  <img src="https://img.shields.io/github/forks/arsenelupin14/THEMIS?style=flat-square" alt="GitHub forks">
+  <img src="https://img.shields.io/github/watchers/arsenelupin14/THEMIS?style=flat-square" alt="GitHub watchers">
+  <img src="https://img.shields.io/github/v/release/arsenelupin14/THEMIS?style=flat-square" alt="GitHub release">
+  <img src="https://img.shields.io/github/license/arsenelupin14/THEMIS?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/actions/workflow/status/arsenelupin14/THEMIS/validate.yml?branch=main&style=flat-square" alt="CI">
+</p>
 
-A GitHub-installable agent skill for evidence-aware research synthesis, citation auditing, adversarial review, and clean final reports.
+<p align="center">
+  <strong>Research workrooms for AI agents.</strong>
+</p>
+
+<p align="center">
+  A GitHub-installable agent skill for evidence-aware research synthesis, citation auditing, adversarial review, and clean final reports.
+</p>
 
 Themis is an AI agent skill that converts a single general-purpose assistant into a structured, multi-agent research workflow. By establishing clear boundaries, it turns messy reasoning into an auditable process covering evidence retrieval, citation verification, adversarial review, and clean final reports.
 

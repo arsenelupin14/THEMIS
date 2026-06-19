@@ -1,11 +1,11 @@
 ---
 name: themis
-description: Use when the user asks for planning, critique, architecture, implementation strategy, product design, multi-agent review, role-based discussion, anti-sycophancy reasoning, or structured decision support. Themis creates a dynamic workroom of task-specific roles, forces useful disagreement, compresses shared memory, resolves conflicts, and returns a supervisor-grade final report. Do not use for trivial factual questions or simple edits.
+description: Use when the user needs structured research synthesis, literature review planning, cross-domain scientific critique, citation auditing, adversarial review, research dossier generation, or evidence-grounded decision support. Themis creates a research workroom with dynamic specialist agents, citation firewalling, peer review gates, compact per-agent memory, and clean human-facing final reports.
 ---
 
 # Themis
 
-Themis is a dynamic workroom skill for AI agents.
+Themis is a research orchestration skill for AI agents.
 
 Do not simply agree with the user.
 Themis must not roleplay fictional characters.
@@ -15,75 +15,82 @@ Themis must not become a standalone CLI, web app, or multi-agent framework.
 Themis stores only public working memory:
 facts, assumptions, risks, decisions, contracts, conflicts, open questions, and next actions.
 
-## Required workflow
+## Required roles
 
-When Themis is used:
+In research mode, Themis must always include:
+- Master Research agent
+- Evidence Retrieval Agent
+- Citation Auditor agent
+- Peer Reviewer agent
+- 2–5 initial domain agents
 
-1. Intake the user request.
-2. Identify domain, goal, constraints, unknowns, and expected output.
-3. Generate 3–7 task-specific functional roles.
-4. Give each role a mission, authority, must_challenge list, must_not_do list, required inputs, output schema, handoff targets, and stop condition.
-5. Run independent role review.
-6. Run cross-role challenge.
-7. Detect conflicts and contradictions.
-8. Resolve conflicts through supervisor arbitration.
-9. Compress shared memory.
-10. Produce a final supervisor report.
+## Specialist Spawning
 
-## No empty agreement
+Themis may spawn new specialist agents only when:
+- a claim requires expertise not covered by existing agents
+- a debate expands into a new domain
+- a citation audit exposes a disputed technical area
+- a conflict cannot be resolved by current agents
+- the Master Research agent approves the spawn request
 
-A role may not merely say “I agree”.
+## Evidence Retrieval Rules
 
-Agreement is valid only if paired with a concrete implication, test, contract, risk reduction, or next action.
+- The Evidence Retrieval Agent searches candidate sources for source-required claims.
+- The Evidence Retrieval Agent may use host-provided web, browser, file-search, scholarly search, dataset, or documentation tools when available.
+- The Evidence Retrieval Agent must not mark claims as VERIFIED; it may only produce candidate sources.
+- The Citation Auditor is the only role allowed to mark a claim as VERIFIED.
+- If no retrieval tools are available, source-required claims must remain NEEDS_SOURCE, UNVERIFIED, or QUARANTINED.
 
-## Claim labels
+## Output Boundaries
 
-Every important claim must be labeled as one of:
+Internal labels are allowed only in agent memory, claim ledgers, source registers, citation audits, and internal workroom files.
 
+Internal labels must not appear in clean drafts or final reports.
+
+Forbidden in public draft/final output:
+- FACT-...
+- CONFLICT-...
+- CONTRACT-...
+- DECISION-...
+- TASK-...
+- RISK-...
+- QUESTION-...
+- NEXT-...
+- THEMIS_STATE_V1
+- ROLE:
+- POSITION:
+- HANDOFF:
+- CLAIM_ID
+- SOURCE_ID
+- SOURCE_STATUS
 - [EVIDENCE]
 - [ASSUMPTION]
-- [RISK]
-- [QUESTION]
-- [DECISION]
-- [CONTRACT]
 - [UNKNOWN]
+- [NEEDS-CITATION]
 
-## Role output schema
+## Research Rule
 
-Each role must output:
+No verified citation, no evidence claim.
 
-- ROLE
-- POSITION: approve / reject / needs-info / revise
-- FINDINGS
-- RISKS
-- QUESTIONS
-- CONTRACTS
-- CHALLENGES
-- HANDOFF
-- CONFIDENCE: high / medium / low
+If a claim lacks a verified source, label it internally as unverified and move it to the claim ledger or quarantined claims. Do not include it as a fact in the final report.
 
-## Final supervisor report schema
+## Known Limitations
 
-The final report must include:
-
-1. Interpreted user request
-2. Generated workroom
-3. Key findings
-4. Conflicts detected
-5. Decisions made
-6. Remaining risks
-7. Open questions
-8. Recommended next action
-9. Compressed state
+- Themis has no independent execution runtime.
+- Themis depends on host-agent tools for execution.
+- Themis cannot guarantee protocol compliance.
+- Themis does not run experiments.
+- Themis has not yet benchmark-proven hallucination reduction.
+- Themis is not a truth machine.
 
 ## Reference files
 
 Use these references when deeper detail is needed:
-
-- references/protocol.md
-- references/role-generation.md
-- references/challenge-loop.md
-- references/memory-compression.md
-- references/anti-sycophancy.md
-- references/simulation.md
-- references/install-notes.md
+- references/research-mode.md
+- references/evidence-retrieval.md
+- references/citation-hardening.md
+- references/peer-review-gate.md
+- references/agent-core-memory.md
+- references/dynamic-agent-spawn.md
+- references/internal-vs-public-output.md
+- references/orchestration-protocol.md

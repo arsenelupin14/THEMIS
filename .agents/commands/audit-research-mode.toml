@@ -1,0 +1,11 @@
+description = "Audit research mode and clean output boundaries."
+
+prompt = """
+Run research mode validation checks:
+- pytest
+- python skills/themis/scripts/validate_research_mode.py
+- python skills/themis/scripts/validate_retrieval_contract.py
+- python skills/themis/scripts/validate_public_output.py
+- python skills/themis/scripts/validate_claim_ledger.py
+- python skills/themis/scripts/validate_orchestration_manifest.py
+"""
